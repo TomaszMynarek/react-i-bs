@@ -136,7 +136,164 @@ Kolorowe warianty:
 </ul>
 ```
 
+# Rozwiązany egzamin z galerią zdjeć
+```jsx
+// Import hooka useState z Reacta – pozwala przechowywać dane w komponencie
+import { useState } from 'react'
 
+// Import własnych stylów CSS
+import './App.css'
+
+// Import stylów Bootstrap (ładny wygląd)
+import 'bootstrap/dist/css/bootstrap.css'
+
+// Główna funkcja aplikacji
+function App() {
+
+    // Stan określający, czy mają być pokazane ZWIERZĘTA
+    const [showAnimals, setShowAnimals] = useState(true)
+
+    // Stan określający, czy mają być pokazane KWIATY
+    const [showFlowers, setShowFlowers] = useState(true)
+
+    // Stan określający, czy mają być pokazane SAMOCHODY
+    const [showCars, setShowCars] = useState(true)
+
+    // Stan przechowujący TABLICĘ ZDJĘĆ
+    const [photos, setPhotos] = useState([
+        // Każdy obiekt to jedno zdjęcie
+        { id: 0, alt: "Mak", filename: "obraz1.jpg", category: 1, downloads: 35 },
+        { id: 1, alt: "Bukiet", filename: "obraz2.jpg", category: 1, downloads: 43 },
+        { id: 2, alt: "Dalmatyńczyk", filename: "obraz3.jpg", category: 2, downloads: 2 },
+        { id: 3, alt: "Świnka morska", filename: "obraz4.jpg", category: 2, downloads: 53 },
+        { id: 4, alt: "Rotwailer", filename: "obraz5.jpg", category: 2, downloads: 43 },
+        { id: 5, alt: "Audi", filename: "obraz6.jpg", category: 3, downloads: 11 },
+        { id: 6, alt: "kotki", filename: "obraz7.jpg", category: 2, downloads: 22 },
+        { id: 7, alt: "Róża", filename: "obraz8.jpg", category: 1, downloads: 33 },
+        { id: 8, alt: "Świnka morska", filename: "obraz9.jpg", category: 2, downloads: 123 },
+        { id: 9, alt: "Foksterier", filename: "obraz10.jpg", category: 2, downloads: 22 },
+        { id: 10, alt: "Szczeniak", filename: "obraz11.jpg", category: 2, downloads: 12 },
+        { id: 11, alt: "Garbus", filename: "obraz12.jpg", category: 3, downloads: 321 }
+    ])
+
+    // Tworzymy nową tablicę zdjęć na podstawie zaznaczonych kategorii
+    const filteredPhotos = photos.filter(p => {
+
+        // Jeśli zdjęcie jest kwiatem i opcja "Kwiaty" jest włączona – pokaż
+        if (p.category === 1 && showFlowers) {
+            return true;
+        }
+        // Jeśli zdjęcie jest zwierzęciem i opcja "Zwierzęta" jest włączona – pokaż
+        else if (p.category === 2 && showAnimals) {
+            return true;
+        }
+        // Jeśli zdjęcie jest samochodem i opcja "Samochody" jest włączona – pokaż
+        else if (p.category === 3 && showCars) {
+            return true;
+        }
+
+        // W przeciwnym razie – nie pokazuj zdjęcia
+        return false;
+    })
+
+    // Funkcja zwiększająca liczbę pobrań zdjęcia
+    function updateDownloads(id) {
+
+        // Tworzymy kopię tablicy zdjęć (ważne w React)
+        const newPhotos = [...photos]
+
+        // Szukamy zdjęcia o podanym id
+        for (const p of newPhotos) {
+            if (p.id === id) {
+                // Zwiększamy liczbę pobrań o 1
+                p.downloads++;
+                break;
+            }
+        }
+
+        // Zapisujemy nową tablicę zdjęć do stanu
+        setPhotos(newPhotos)
+    }
+
+    // JSX – to, co zobaczymy na stronie
+    return (
+        <>
+            {/* Tytuł strony */}
+            <h1>Kategorie zdjęć</h1>
+
+            {/* Checkbox: KWIATY */}
+            <div className="form-check form-check-inline form-switch">
+                <input
+                    type="checkbox"
+                    name="flowers"
+                    id="flowers"
+                    className="form-check-input"
+                    checked={showFlowers} // stan checkboxa
+                    onChange={() => setShowFlowers(!showFlowers)} // zmiana stanu
+                />
+                <label htmlFor="flowers" className="form-check-label">Kwiaty</label>
+            </div>
+
+            {/* Checkbox: ZWIERZĘTA */}
+            <div className="form-check form-check-inline form-switch">
+                <input
+                    type="checkbox"
+                    name="animals"
+                    id="animals"
+                    className="form-check-input"
+                    checked={showAnimals}
+                    onChange={() => setShowAnimals(!showAnimals)}
+                />
+                <label htmlFor="animals" className="form-check-label">Zwierzęta</label>
+            </div>
+
+            {/* Checkbox: SAMOCHODY */}
+            <div className="form-check form-check-inline form-switch">
+                <input
+                    type="checkbox"
+                    name="cars"
+                    id="cars"
+                    className="form-check-input"
+                    checked={showCars}
+                    onChange={() => setShowCars(!showCars)}
+                />
+                <label htmlFor="cars" className="form-check-label">Samochody</label>
+            </div>
+
+            {/* Kontener na zdjęcia */}
+            <div className="row">
+                {filteredPhotos.map(p => (
+                    <div key={p.id} className="col">
+
+                        {/* Wyświetlenie obrazka */}
+                        <img
+                            src={"assets/" + p.filename}
+                            alt={p.alt}
+                            className="rounded"
+                            style={{ margin: "5px" }}
+                        />
+
+                        {/* Liczba pobrań */}
+                        <h4>Pobrań: {p.downloads}</h4>
+
+                        {/* Przycisk zwiększający liczbę pobrań */}
+                        <button
+                            className="btn btn-success"
+                            onClick={() => updateDownloads(p.id)}
+                        >
+                            Pobierz
+                        </button>
+                    </div>
+                ))}
+            </div>
+        </>
+    )
+}
+
+// Eksport komponentu, aby mógł być użyty w index.js
+export default App
+
+```
 
 
 # Rozwiazany egzamin z wypisywaniem do konsoli
