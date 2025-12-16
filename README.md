@@ -396,3 +396,111 @@ function App() {
 export default App;
 
 ```
+# Rozwiazany egzamin z wypisywaniem do konsoli
+
+```jsx
+// Import hooka useRef z React – pozwala tworzyć referencje do elementów DOM
+import { useRef } from "react"
+
+// Import własnego pliku CSS (wygląd strony)
+import "./App.css"
+
+// Import stylów Bootstrap (ładne formularze, przyciski itd.)
+import "bootstrap/dist/css/bootstrap.css"
+
+// Główna funkcja aplikacji
+function App() {
+
+  // Tablica z nazwami kursów
+  const kursy = [
+    "Programowanie w C#",
+    "Angular dla początkujących",
+    "Kurs Django",
+  ];
+
+  // Tworzymy referencję do pola Imię i Nazwisko
+  const imieNazwiskoRef = useRef();
+
+  // Tworzymy referencję do pola Numer Kursu
+  const numerKursuRef = useRef();
+
+  // Funkcja uruchamiana po wysłaniu formularza
+  function handleSubmit(event) {
+
+    // Zatrzymuje domyślne odświeżanie strony po wysłaniu formularza
+    event.preventDefault();
+
+    // Pobranie wartości z pola Imię i Nazwisko
+    const imienazwisko = imieNazwiskoRef.current.value;
+    console.log(imienazwisko); // Wyświetlenie w konsoli
+
+    // Pobranie wartości z pola Numer Kursu
+    const numerkursu = numerKursuRef.current.value;
+
+    // Pobranie kursu z tablicy na podstawie numeru
+    const kurs = kursy[numerkursu - 1]; // -1 bo tablica liczy od 0
+
+    // Sprawdzenie czy kurs istnieje
+    if (kurs !== undefined) {
+      console.log(kurs); // Wyświetlenie nazwy kursu
+    } else {
+      console.log("Nieprawidłowy numer kursu"); // Obsługa błędu
+    }
+  }
+
+  // JSX – to, co zobaczymy na stronie
+  return (
+    <>
+      {/* Wyświetlenie liczby kursów */}
+      <h2>Liczba kursów: {kursy.length}</h2>
+
+      {/* Lista kursów w formie numerowanej */}
+      <ol>
+        {kursy.map((kurs, index) => (
+          <li key={index}>{kurs}</li> // Każdy kurs w <li>
+        ))}
+      </ol>
+
+      {/* Formularz zapisujący do kursu */}
+      <form onSubmit={handleSubmit}>
+
+        {/* Pole Imię i Nazwisko */}
+        <div className="form-group">
+          <label htmlFor="imienazwisko">Imię i nazwisko:</label>
+          <input
+            type="text"                  // Typ pola – tekst
+            id="imienazwisko"            // Id pola
+            name="imienazwisko"          // Nazwa pola
+            className="form-control"     // Styl Bootstrapa
+            ref={imieNazwiskoRef}        // Referencja do pola
+          />
+        </div>
+
+        {/* Pole Numer Kursu */}
+        <div className="form-group">
+          <label htmlFor="numerkursu">Numer kursu:</label>
+          <input
+            type="number"                // Typ pola – liczba
+            id="numerkursu"
+            name="numerkursu"
+            className="form-control"
+            ref={numerKursuRef}          // Referencja do pola
+          />
+        </div>
+
+        {/* Przycisk wysyłający formularz */}
+        <div className="form-group mt-3">
+          <button type="submit" className="btn btn-primary">
+            Zapisz do kursu
+          </button>
+        </div>
+
+      </form>
+    </>
+  );
+}
+
+// Eksport komponentu App, aby można było użyć go w innych plikach
+export default App
+
+```
