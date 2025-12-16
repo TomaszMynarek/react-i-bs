@@ -22,119 +22,138 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 teraz juz powinno wszystko dzialac 
 
 # BS
-
-## dodawnie przycisku-wszystkie typy
-
 ```jsx
-<div className="App">
-      <button class="btn btn-primary">Primary</button>
-      <button class="btn btn-secondary">Secondary</button>
-      <button class="btn btn-success">Success</button>
-      <button class="btn btn-danger">Danger</button>
-      <button class="btn btn-warning">Warning</button>
-      <button class="btn btn-info">Info</button>
-      <button class="btn btn-dark">Dark</button>
-      <button class="btn btn-light">Light</button>
-      <button class="btn btn-link">Link</button>
-</div>
+import "bootstrap/dist/css/bootstrap.css";
+
+function App() {
+  return (
+    <div className="container mt-4">
+      {/* ================= GRID ================= */}
+      {/* Grid – układ strony oparty na wierszach i kolumnach */}
+      <h2>Grid</h2>
+      <div className="row">
+        <div className="col bg-light border">Kolumna 1</div>
+        <div className="col bg-light border">Kolumna 2</div>
+        <div className="col bg-light border">Kolumna 3</div>
+      </div>
+
+      {/* ================= BUTTONS ================= */}
+      {/* Przyciski – różne kolory i style */}
+      <h2 className="mt-4">Buttons</h2>
+      <button className="btn btn-primary me-2">Primary</button>
+      <button className="btn btn-success me-2">Success</button>
+      <button className="btn btn-danger">Danger</button>
+
+      {/* ================= FORMS ================= */}
+      {/* Formularze – inputy, selecty, checkboxy */}
+      <h2 className="mt-4">Forms</h2>
+      <div className="form-group mb-2">
+        <label>Imię</label>
+        <input type="text" className="form-control" />
+      </div>
+      <div className="form-group mb-2">
+        <label>Wybierz opcję</label>
+        <select className="form-select">
+          <option>A</option>
+          <option>B</option>
+        </select>
+      </div>
+      <div className="form-check form-switch">
+        <input className="form-check-input" type="checkbox" />
+        <label className="form-check-label">Aktywny</label>
+      </div>
+
+      {/* ================= TYPOGRAPHY ================= */}
+      {/* Teksty – wyrównanie, pogrubienie, kolor */}
+      <h2 className="mt-4">Typography</h2>
+      <p className="text-center fw-bold text-primary">
+        Wyśrodkowany, pogrubiony tekst
+      </p>
+
+      {/* ================= CARD ================= */}
+      {/* Card – karta z treścią (np. produkt, post) */}
+      <h2 className="mt-4">Card</h2>
+      <div className="card" style={{ width: "18rem" }}>
+        <div className="card-body">
+          <h5 className="card-title">Tytuł</h5>
+          <p className="card-text">Treść karty</p>
+          <button className="btn btn-primary">Akcja</button>
+        </div>
+      </div>
+
+      {/* ================= IMAGES ================= */}
+      {/* Obrazy – responsywne, zaokrąglone */}
+      <h2 className="mt-4">Images</h2>
+      <img
+        src="https://via.placeholder.com/150"
+        className="img-fluid rounded"
+        alt="przyklad"
+      />
+
+      {/* ================= TABLE ================= */}
+      {/* Tabele – dane w wierszach */}
+      <h2 className="mt-4">Table</h2>
+      <table className="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nazwa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Element A</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Element B</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {/* ================= ALERT ================= */}
+      {/* Alert – komunikaty */}
+      <h2 className="mt-4">Alert</h2>
+      <div className="alert alert-success">
+        Operacja zakończona sukcesem
+      </div>
+
+      {/* ================= LIST GROUP ================= */}
+      {/* Listy elementów */}
+      <h2 className="mt-4">List group</h2>
+      <ul className="list-group">
+        <li className="list-group-item">Element 1</li>
+        <li className="list-group-item">Element 2</li>
+      </ul>
+
+      {/* ================= BADGE ================= */}
+      {/* Badge – mała etykieta */}
+      <h2 className="mt-4">Badge</h2>
+      <span className="badge bg-primary">Nowe</span>
+
+      {/* ================= FLEX ================= */}
+      {/* Flex – ustawianie elementów */}
+      <h2 className="mt-4">Flex</h2>
+      <div className="d-flex justify-content-between bg-light p-2">
+        <span>Lewo</span>
+        <span>Prawo</span>
+      </div>
+
+      {/* ================= SPACING ================= */}
+      {/* Spacing – marginesy i padding */}
+      <h2 className="mt-4">Spacing</h2>
+      <div className="bg-warning p-3 mt-2">
+        Padding i margines
+      </div>
+    </div>
+  );
+}
+
+export default App;
 
 ```
 
-przycisk bez tła 
-
-```jsx
-<div className="App">
-    <button class="btn btn-outline-primary">Primary</button>
-    <button class="btn btn-outline-success">Success</button>
-    <button class="btn btn-outline-danger">Danger</button>
-</div>
-
-```
-
-rozmiary przyciskow
-```jsx
-<div className="App">
-    <button class="btn btn-primary btn-lg">Duży</button>
-    <button class="btn btn-primary btn-sm">Mały</button>
-</div>
-
-```
-przycisk w pełnej szerokości
-```jsx
-<div className="App">
-    <button class="btn btn-primary w-100">Na całą szerokość</button>
-</div>
-
-```
-Przycisk jako link, a lub input
-```jsx
-<div className="App">
-    <a class="btn btn-primary" href="#">Link jako przycisk</a>
-    <input class="btn btn-success" type="submit" value="Wyślij"></input>
-</div>
-```
-w znaczniku a atrybut href odpowiada za przekierowywanie
-
-Przyciski grupowane
-```jsx
-<div class="btn-group">
-  <button class="btn btn-primary">1</button>
-  <button class="btn btn-primary">2</button>
-  <button class="btn btn-primary">3</button>
-</div>
-```
-
-## listy 
-
-Listy nieuporządkowane (bullet list)
-```jsx
-<ul class="list-unstyled">
-  <li>Element listy</li>
-  <li>Element listy</li>
-</ul>
-```
-lub standardowa 
-```jsx
-<ul>
-  <li>Punkt 1</li>
-  <li>Punkt 2</li>
-</ul>
-```
-lista opisowa 
-```jsx
-<dl>
-  <dt>Nazwa</dt>
-  <dd>Opis tej nazwy</dd>
-
-  <dt>HTML</dt>
-  <dd>Język znaczników</dd>
-</dl>
-```
-## List group
-
-podstawowa
-```jsx
-<ul class="list-group">
-  <li class="list-group-item">Element 1</li>
-  <li class="list-group-item">Element 2</li>
-</ul>
-```
-Z aktywnym lub wyłączonym elementem:
-```jsx
-<ul class="list-group">
-  <li class="list-group-item active">Aktywny</li>
-  <li class="list-group-item disabled">Wyłączony</li>
-  <li class="list-group-item">Normalny</li>
-</ul>
-```
-Kolorowe warianty:
-```jsx
-<ul class="list-group">
-    <li class="list-group-item list-group-item-success">OK</li>
-    <li class="list-group-item list-group-item-danger">Błąd</li>
-    <li class="list-group-item list-group-item-warning">Uwaga</li>
-</ul>
-```
 
 # Rozwiązany egzamin z galerią zdjeć
 ```jsx
