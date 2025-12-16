@@ -135,3 +135,107 @@ Kolorowe warianty:
     <li class="list-group-item list-group-item-warning">Uwaga</li>
 </ul>
 ```
+
+
+
+
+# Rozwiazany egzamin z wypisywaniem do konsoli
+
+```jsx
+// Import pliku CSS z własnymi stylami aplikacji
+import './App.css';
+
+// Import gotowych stylów Bootstrap (ładne formularze, przyciski itd.)
+import "bootstrap/dist/css/bootstrap.css";
+
+// Główna funkcja aplikacji React
+function App() {
+
+  // Funkcja uruchamiana po wysłaniu formularza
+  function onSubmit(event) {
+
+    // Zatrzymuje domyślne zachowanie formularza (odświeżenie strony)
+    event.preventDefault();
+
+    // Pobiera tekst wpisany w pole input o nazwie "filmTitle"
+    const title = event.target.elements.filmTitle.value;
+
+    // Pobiera wybraną wartość z listy select o nazwie "filmType"
+    const type = event.target.elements.filmType.value;
+
+    // Wyświetla w konsoli tytuł i rodzaj filmu
+    console.log(`tytul: ${title}, rodzaj: ${type}`);
+  }
+
+  // Zwracany JSX – czyli to, co zobaczymy na stronie
+  return (
+    <>
+      {/* Formularz, który po wysłaniu wywoła funkcję onSubmit */}
+      <form onSubmit={onSubmit} method="post">
+
+        {/* Grupa formularza – tytuł filmu */}
+        <div className="form-group">
+
+          {/* Etykieta opisująca pole input */}
+          <label htmlFor="filmTitle">Tytuł filmu</label>
+
+          {/* Pole tekstowe do wpisania tytułu filmu */}
+          <input
+            type="text"              // Typ pola – tekst
+            name="filmTitle"         // Nazwa pola (używana w JS)
+            id="filmTitle"           // Id pola (łączy się z label)
+            className="form-control" // Klasa Bootstrapa dla wyglądu
+          />
+        </div>
+
+        {/* Grupa formularza – rodzaj filmu */}
+        <div className="form-group">
+
+          {/* Etykieta dla listy wyboru */}
+          <label htmlFor="filmType">Rodzaj</label>
+
+          {/* Lista rozwijana (select) */}
+          <select
+            name="filmType"          // Nazwa pola
+            id="filmType"            // Id pola
+            className="form-control" // Styl Bootstrapa
+          >
+
+            {/* Pusta opcja – domyślna */}
+            <option></option>
+
+            {/* Opcja: Komedia */}
+            <option value="1">Komedia</option>
+
+            {/* Opcja: Obyczajowy */}
+            <option value="2">Obyczajowy</option>
+
+            {/* Opcja: Sensacyjny */}
+            <option value="3">Sensacyjny</option>
+
+            {/* Opcja: Horror */}
+            <option value="4">Horror</option>
+          </select>
+        </div>
+
+        {/* Grupa z przyciskiem */}
+        <div className="form-group">
+
+          {/* Przycisk wysyłający formularz */}
+          <button
+            type="submit"           // Typ submit – wysyła formularz
+            className="btn btn-primary" // Styl Bootstrapa
+          >
+            Dodaj
+          </button>
+        </div>
+
+      </form>
+    </>
+  );
+}
+
+// Eksport komponentu App, aby mógł być użyty w innych plikach
+export default App;
+
+```
