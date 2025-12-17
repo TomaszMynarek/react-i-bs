@@ -83,12 +83,12 @@ o uniwersalny komponent służący do wyświetlania treści w estetycznym „kaf
 tCarousel służy do wyświetlania serii slajdów (obrazów, tekstów lub dowolnego HTML-a) w jednym miejscu. Slajdy mogą zmieniać się automatycznie albo po kliknięciu przycisków.
 
 Jak działa:
-.carousel – główny kontener
-.carousel-inner – przechowuje slajdy
-.carousel-item – pojedynczy slajd
-jeden slajd MUSI mieć .active, inaczej nic się nie wyświetli
-przyciski carousel-control-prev/next sterują zmianą slajdów
-JavaScript Bootstrapa obsługuje animacje i zdarzenia
+.carousel – główny kontener,
+.carousel-inner – przechowuje slajdy,
+.carousel-item – pojedynczy slajd,
+jeden slajd MUSI mieć .active, inaczej nic się nie wyświetli,
+przyciski carousel-control-prev/next sterują zmianą slajdów,
+JavaScript Bootstrapa obsługuje animacje i zdarzenia,
 
 ```html
 <div id="carouselExample" class="carousel slide">
@@ -116,9 +116,9 @@ JavaScript Bootstrapa obsługuje animacje i zdarzenia
 Close button to uniwersalny przycisk zamykania, np. alertów, modali, toastów.
 
 Jak działa:
-.btn-close to tylko ikona przycisku
-sam przycisk nic nie zamyka, musi być użyty wewnątrz komponentu, który obsługuje zamykanie
-aria-label jest wymagany dla dostępności
+.btn-close to tylko ikona przycisku,
+sam przycisk nic nie zamyka, musi być użyty wewnątrz komponentu, który obsługuje zamykanie,
+aria-label jest wymagany dla dostępności,
 ```html
 <button type="button"
         class="btn-close"
@@ -129,9 +129,9 @@ aria-label jest wymagany dla dostępności
 Collapse umożliwia zwijanie i rozwijanie treści (ukrywanie/pokazywanie elementów).
 
 Jak działa:
-element z .collapse jest ukryty
-przycisk lub link z data-bs-toggle="collapse" steruje widocznością
-animacja zmienia height (lub width przy wersji poziomej)
+element z .collapse jest ukryty,
+przycisk lub link z data-bs-toggle="collapse" steruje widocznością,
+animacja zmienia height (lub width przy wersji poziomej),
 ```html
 <button class="btn btn-primary"
         data-bs-toggle="collapse"
@@ -151,10 +151,10 @@ animacja zmienia height (lub width przy wersji poziomej)
 Dropdown wyświetla rozwijane menu po kliknięciu przycisku lub linku.
 
 Jak działa:
-.dropdown-toggle uruchamia menu
-.dropdown-menu zawiera elementy menu
-Bootstrap używa Popper.js do pozycjonowania
-menu otwiera się po kliknięciu, nie po najechaniu
+.dropdown-toggle uruchamia menu,
+.dropdown-menu zawiera elementy menu,
+Bootstrap używa Popper.js do pozycjonowania,
+menu otwiera się po kliknięciu, nie po najechaniu,
 ```html
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle"
@@ -172,10 +172,10 @@ menu otwiera się po kliknięciu, nie po najechaniu
 służy do wyświetlania list elementów (tekstu, linków, przycisków) w spójnym stylu.
 
 Jak działa:
-.list-group – kontener
-.list-group-item – pojedynczy element
-.active oznacza aktualnie wybrany element
-.disabled blokuje interakcję
+.list-group – kontener,
+.list-group-item – pojedynczy element,
+.active oznacza aktualnie wybrany element,
+.disabled blokuje interakcję,
 ```html
 <ul class="list-group">
   <li class="list-group-item active">Aktywny</li>
@@ -188,10 +188,10 @@ Jak działa:
 Navbar to główny pasek nawigacyjny strony, w pełni responsywny.
 
 Jak działa:
-.navbar – główny kontener
-.navbar-expand-lg – określa moment zwijania
-.navbar-toggler + Collapse obsługują wersję mobilną
-może zawierać dropdowny, formularze, logo
+.navbar – główny kontener,
+.navbar-expand-lg – określa moment zwijania,
+.navbar-toggler + Collapse obsługują wersję mobilną,
+może zawierać dropdowny, formularze, logo,
 ```html
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -218,10 +218,10 @@ może zawierać dropdowny, formularze, logo
 Progress pokazuje postęp operacji (np. ładowania).
 
 Jak działa:
-.progress to kontener
-.progress-bar to pasek
-szerokość (width) określa procent
-aria-* poprawiają dostępność
+.progress to kontener,
+.progress-bar to pasek,
+szerokość (width) określa procent,
+aria-* poprawiają dostępność,
 ```html
     <div
       className="progress"
@@ -242,9 +242,9 @@ aria-* poprawiają dostępność
 Scrollspy automatycznie podświetla aktywne linki w menu na podstawie pozycji przewijania strony.
 
 Jak działa:
-kontener z data-bs-spy="scroll" obserwuje scroll
-data-bs-target wskazuje menu
-linki muszą prowadzić do id sekcji
+kontener z data-bs-spy="scroll" obserwuje scroll,
+data-bs-target wskazuje menu,
+linki muszą prowadzić do id sekcji,
 ```html
 <nav id="menu">
   <a href="#sekcja1">Sekcja 1</a>
